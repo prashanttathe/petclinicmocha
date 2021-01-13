@@ -29,5 +29,7 @@ COPY . /app
 RUN chmod -R 777 ./
 RUN webdriver-manager update
 RUN npm test
+RUN pwd
+RUN ls -lh
 
 # add app

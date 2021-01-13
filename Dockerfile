@@ -23,6 +23,7 @@ ENV PATH=$PATH:/home/node/.npm-global/bin
 
 COPY package.json /app/package.json
 RUN npm install -g
+RUN npm update -g
 COPY . /app
 RUN chmod -R 777 ./
 RUN webdriver-manager update

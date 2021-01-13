@@ -6,7 +6,7 @@ RUN apk add openjdk11
 RUN java --version
 
 #install npm
-RUN apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/ nodejs=12.20.1-r0
+RUN apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/ nodejs*
 
 #insttall firefox
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing firefox

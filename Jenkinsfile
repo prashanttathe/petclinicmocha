@@ -21,8 +21,7 @@ pipeline {
 			steps {
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /tmp
-				 	allure serve /tmp/allure-results 
+					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /var/www/html/\${env.JOB_BASE_NAME}
 				   """
 			}
 		}

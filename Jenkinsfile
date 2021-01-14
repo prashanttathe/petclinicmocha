@@ -23,6 +23,7 @@ pipeline {
 			steps {
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
+					chmod -R 777 /var/lib/jenkins/workspace/\$JOB_NAME
 					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /tmp
 				 	allure serve /tmp/allure-results
 				"""

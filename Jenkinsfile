@@ -6,8 +6,8 @@ pipeline {
 	}
     	agent any
 	stages {
-		agent { dockerfile true }
 		stage('Initialize') {
+			agent { dockerfile true }
 			steps {
 				echo 'Placeholder.'
 				//sh 'rm -f /var/lib/jenkins/workspace/FEI_PetClinic_Protractorui/`date +"%Y-%m-%d"`.html'

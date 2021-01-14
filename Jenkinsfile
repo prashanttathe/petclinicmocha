@@ -12,7 +12,8 @@ pipeline {
 				echo 'Placeholder.'
 				//sh 'rm -f /var/lib/jenkins/workspace/FEI_PetClinic_Protractorui/`date +"%Y-%m-%d"`.html'
 				sh """
-					cp -r /app/allure-results /var/lib/jenkins/workspace/FEI_PetClinic_Mochaui/
+					JOB_NAME=${env.JOB_BASE_NAME}
+					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/app/allure-results /var/lib/jenkins/workspace/\$JOB_NAME
 				   """
 		
 			}
@@ -20,8 +21,11 @@ pipeline {
 		stage('Reporting'){
 			agent any
 			steps {
-				sh 'cp -r /var/lib/jenkins/workspace/FEI_PetClinic_Mochaui/allure-results /tmp'
-				sh 'allure serve /tmp/allure-results'
+				sh """
+					JOB_NAME=${env.JOB_BASE_NAME}
+					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /tmp
+				 	allure serve /tmp/allure-results
+				"""
 			}
 		}
 		

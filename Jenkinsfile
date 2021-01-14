@@ -13,7 +13,7 @@ pipeline {
 				//sh 'rm -f /var/lib/jenkins/workspace/FEI_PetClinic_Protractorui/`date +"%Y-%m-%d"`.html'
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					sudo cp -r /app/allure-results /var/lib/jenkins/workspace/\$JOB_NAME
+					sudo cp -R /app/allure-results/ /var/lib/jenkins/workspace/\$JOB_NAME/
 				   """
 		
 			}

@@ -4,10 +4,9 @@ pipeline {
     		def GIT_REPO_NAME = "prashanttathe"
     		def DEPLOY_ENV = "dev"
 	}
-    	agent any
+    	agent { dockerfile true }
 	stages {
 		stage('Initialize') {
-			agent { dockerfile true }
 			steps {
 				echo 'Placeholder.'
 				//sh 'rm -f /var/lib/jenkins/workspace/FEI_PetClinic_Protractorui/`date +"%Y-%m-%d"`.html'
@@ -19,13 +18,12 @@ pipeline {
 			}
 		}
 		stage('Reporting'){
-			agent any
-			steps {
+			node {
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
 					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /tmp
-				 	allure serve /tmp/allure-results
-				"""
+				 	allure serve /tmp/allure-results 
+				   """
 			}
 		}
 		

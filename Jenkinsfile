@@ -34,5 +34,16 @@ pipeline {
 		failure { 
 		    echo "Please check logs for more details."
 		}
+		always {
+		    script {
+		      allure([
+			includeProperties: false,
+			jdk: '',
+			properties: [],
+			reportBuildPolicy: 'ALWAYS',
+			results: [[path: 'target/allure-results']]
+		      ])
+		    }
+		}
     	}
 }

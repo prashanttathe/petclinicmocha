@@ -6,7 +6,7 @@ pipeline {
 	}
     	agent { dockerfile true }
 	stages {
-		stage('Initialize') {
+		/*stage('Initialize') {
 			steps {
 				echo 'Placeholder.'
 				//sh 'rm -f /var/lib/jenkins/workspace/FEI_PetClinic_Protractorui/`date +"%Y-%m-%d"`.html'
@@ -18,7 +18,7 @@ pipeline {
 				//sh 'cp /app/Reports/`date +"%Y-%m-%d"`.html /var/lib/jenkins/workspace/${env.BUILD_TAG}'
 				
 			}
-		}
+		}*/
 		stage('Reporting'){
 			steps {
 				

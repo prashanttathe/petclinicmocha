@@ -4,7 +4,7 @@ pipeline {
     		def GIT_REPO_NAME = "prashanttathe"
     		def DEPLOY_ENV = "dev"
 	}
-    	
+    	agent any
 	stages {
 		agent { dockerfile true }
 		stage('Initialize') {

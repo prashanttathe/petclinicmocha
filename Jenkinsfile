@@ -19,6 +19,12 @@ pipeline {
 				
 			}
 		}
+		stage('Reporting'){
+			steps {
+				
+				sh 'allure serve app\allure-results'
+			}
+		}
 		
     	}
 	post { 

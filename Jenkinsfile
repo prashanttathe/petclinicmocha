@@ -9,19 +9,19 @@ pipeline {
 		stage('Initialize') {
 			steps {
 				echo 'Placeholder.'
-				//sh 'rm -f /var/lib/jenkins/workspace/FEI_PetClinic_Protractorui/`date +"%Y-%m-%d"`.html'
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					cp -r /app/allure-results /var/lib/jenkins/workspace/\$JOB_NAME
+					cp -r /app/allure-results /var/lib/jenkins/workspace/\$JOB_NAME@2
 				   """
 		
 			}
 		}
 		stage('Reporting'){
-			node {
+			agent any
+			steps {
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /tmp
+					cp -r /var/lib/jenkins/workspace/\$JOB_NAME@2/allure-results /tmp
 				 	allure serve /tmp/allure-results 
 				   """
 			}

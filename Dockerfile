@@ -31,6 +31,6 @@ RUN webdriver-manager update
 RUN npm test
 RUN pwd
 RUN ls -lh
-RUN allure serve app\allure-results
+#RUN allure serve app\allure-results
 
 # add app

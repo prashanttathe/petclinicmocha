@@ -12,7 +12,7 @@ pipeline {
 				
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					rm -rf /var/lib/jenkins/workspace/\$JOB_NAME/build/reports/tests/test
+					rm -rf /var/lib/jenkins/workspace/\$JOB_NAME//allure-results
 					cp -R /app/allure-results/ /var/lib/jenkins/workspace/\$JOB_NAME/
 				   """				
 			}

@@ -9,41 +9,22 @@ pipeline {
 		stage('Initialize') {
 			steps {
 				echo 'Placeholder.'
+				
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					cp -r /app/allure-results /var/lib/jenkins/workspace/\$JOB_NAME
-				   """
-		
-			}
-		}
-		stage('Reporting'){
-			agent any
-			steps {
-				sh """
-					JOB_NAME=${env.JOB_BASE_NAME}
-					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /var/www/html/\${env.JOB_BASE_NAME}
-				   """
+					rm -rf /var/lib/jenkins/workspace/\$JOB_NAME/build/reports/tests/test
+					cp -R /app/allure-results/ /var/lib/jenkins/workspace/\$JOB_NAME/
+				   """				
 			}
 		}
 		
     	}
 	post { 
 		success { 
-		    sh 'echo "Your test execution is done and reports will be avaible at - http://tnt-aks-automator.eastus.cloudapp.azure.com/`date +"%Y-%m-%d"`.html" in sometime.'
+		    sh 'echo "Your test execution is done and reports will be avaible at - http://tnt-aks-automator.eastus.cloudapp.azure.com/build/reports/tests/test/index.html" in sometime.'
 		}
 		failure { 
 		    echo "Please check logs for more details."
-		}
-		always {
-		    script {
-		      allure([
-			includeProperties: false,
-			jdk: '',
-			properties: [],
-			reportBuildPolicy: 'ALWAYS',
-			results: [[path: 'target/allure-results']]
-		      ])
-		    }
 		}
     	}
 }

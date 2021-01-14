@@ -11,7 +11,7 @@ pipeline {
 				echo 'Placeholder.'
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					cp -r /app/allure-results /var/lib/jenkins/workspace/\$JOB_NAME@2
+					cp -r /app/allure-results /var/lib/jenkins/workspace/\$JOB_NAME
 				   """
 		
 			}
@@ -21,7 +21,7 @@ pipeline {
 			steps {
 				sh """
 					JOB_NAME=${env.JOB_BASE_NAME}
-					cp -r /var/lib/jenkins/workspace/\$JOB_NAME@2/allure-results /tmp
+					cp -r /var/lib/jenkins/workspace/\$JOB_NAME/allure-results /tmp
 				 	allure serve /tmp/allure-results 
 				   """
 			}

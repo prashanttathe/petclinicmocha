@@ -27,7 +27,7 @@ allure.createAttachment('Screenshot', new Buffer(png, 'base64'), 'image/png'
 }
 }) 
         
-    })
+   
 
 });
 

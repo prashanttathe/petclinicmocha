@@ -25,10 +25,9 @@ describe('Verify user will able to navigate to Petclinic application', function 
     });
 
     afterEach(async function () {
-        if(this.currentTest.state !== "passed"){
         const png = await browser.takeScreenshot();
         allure.createAttachment('Screenshot', new Buffer(png, 'base64'), 'image/png');
-        }
+      
     })
 
 
@@ -41,10 +40,10 @@ describe('Verify user able to see menu on homepage', function () {
     });
 
     afterEach(async function () {
-        if(this.currentTest.state !== "passed"){
+      
         const png = await browser.takeScreenshot();
         allure.createAttachment('Screenshot', new Buffer(png, 'base64'), 'image/png');
-        }
+        
     })
 
 });

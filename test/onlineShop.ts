@@ -20,10 +20,12 @@ describe('Testing New Screen-Shop online', function () {
         await onlineShop.getProductList();
     });
 
-    afterEach(async function () {
-      
-        const png = await browser.takeScreenshot();
-        allure.createAttachment('Screenshot', new Buffer(png, 'base64'), 'image/png');
+    afterEach(async function () {
+if(this.currentTest.state !== "passed"){
+const png = await browser.takeScreenshot();
+allure.createAttachment('Screenshot', new Buffer(png, 'base64'), 'image/png');
+}
+}) 
         
     })
 

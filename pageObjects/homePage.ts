@@ -1,36 +1,23 @@
-import { ElementFinder, element, by, ElementArrayFinder } from "protractor";
-const expect = require('chai').expect;
-const log = require("../logFile/logging").default;
-export class HomePage {
+import { ElementFinder, element, by, ElementArrayFinder, browser } from "protractor";
 
-    private home = element(by.css('ul.navbar-nav .glyphicon-home'));
-    private pageTitle = element(by.css('app-welcome h1'));
-    private ownersTab = element(by.css('ul.navbar-nav li.dropdown:nth-child(2)'));
-    private vetTab = element(by.css('ul.navbar-nav li.dropdown:nth-child(3)'));
-    private addNewDropdown = element(by.css('[href="/petclinic/owners/add"]'));
-    private allVetDropdown = element(by.css('[href="/petclinic/vets"]'));
-    private onlineShopTab =element(by.css('ul.navbar-nav li:nth-child(6)'));
+export class homePage {
 
+    private onlineShopMenu = element(by.css("[routerlink='/onlineShop']"));
 
-    public async navigateToHomePage() {
-        await this.home.click();
+    async getPageTitle() {
+        return await browser.getTitle();
     }
-    public async navigateToNewOwnerPage() {
-        await this.ownersTab.click();
-        await this.addNewDropdown.click();
+
+    async getURL() {
+        return await browser.getCurrentUrl();
     }
-    public async navigateToVetPage() {
-        await this.vetTab.click();
-        await this.allVetDropdown.click();
+
+    async getOnlineShopMenuText() {
+        return await this.onlineShopMenu.getText();
     }
-    public async verifyTitle() {
-        await this.pageTitle.getText().then(async function (title) {
-            await log.debug(title);
-            await expect(title).to.equal('Welcome to Petclinic');
-        })
-    }
-    public async navigateToOnlineShopPage() {
-        await this.onlineShopTab.click();
+
+    clickOnlineShopMenu() {
+        return this.onlineShopMenu.click();
     }
 
 }

@@ -31,7 +31,7 @@ describe('Verify user will able to navigate to Petclinic application', function 
 }
 }) 
       
-    })
+    
 
 
 });
@@ -49,7 +49,7 @@ describe('Verify user able to see menu on homepage', function () {
 }
 }) 
         
-    })
+    
 
 });
 

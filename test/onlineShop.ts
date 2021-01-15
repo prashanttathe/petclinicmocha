@@ -16,6 +16,9 @@ describe('Testing New Screen-Shop online', function () {
     it('Verify title of online shop screen', async function () {
         expect(await onlineShop.getPageTitleText()).to.equal("Foods / Treats");
     });
+    it('Products should be displayed on online shop page', async function () {
+        await onlineShop.getProductList();
+    });
 
     afterEach(async function () {
         if(this.currentTest.state !== "passed"){

@@ -1,13 +1,27 @@
 import { ElementFinder, element, by, ElementArrayFinder, browser, ExpectedConditions } from "protractor";
+const expect = require('chai').expect;
 
 export class onlineShopPage {
 
     private pageTitle = element(by.css(".page .page-title"));
+    private productList = element.all(by.css('h4.card-title'));
 
     async getPageTitleText() {
         return await this.pageTitle.getText();
     }
+    async getProductList() {
+        let elements = await this.productList.all(by.tagName("a"));
+        let prodCount = await elements.length;
+        let product: string[] = ['Kennel Kitchen', 'Velcote Liquid', 'Pedigree PRO', 'Velcote Premium', 'Mantra Kismis', 'Haldiram Noodles', 'Bingo Mad Angles', 'Bikani Rasogolla']
 
+        for (let i = 1; i <= prodCount; i++) {
+            await elements[i - 1].getText().then(async function (prodName) {
+                await expect(product[i - 1]).to.equal(prodName);
+            });
+
+        };
+
+    }
     getTreatsTitleText(): any {
         throw new Error("Method not implemented.");
     }

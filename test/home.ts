@@ -20,8 +20,8 @@ describe('Verify user will able to navigate to Petclinic application', function 
     });
 
     it('User should able to see title of the webpage', async function () {
-        expect(await home.getPageTitle()).to.equal("Spring");
-        //expect(await home.getPageTitle()).to.equal("SpringPetclinicAngular");  
+        //expect(await home.getPageTitle()).to.equal("Spring");
+        expect(await home.getPageTitle()).to.equal("SpringPetclinicAngular");  
     });
 
     afterEach(async function () {
